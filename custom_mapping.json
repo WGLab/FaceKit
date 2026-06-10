@@ -1,0 +1,22 @@
+{
+  "by_disease": {
+    "22q11.2 deletion syndrome": {
+      "feature_groups": [
+        "CHIN_HEIGHT",
+        "EYE_EPICANTHUS",
+        "EYE_FISSURE_SLANT",
+        "EYE_GAZE_ASYMMETRY",
+        "EYE_INTER_CANTHAL",
+        "EYE_INTER_PUPILLARY",
+        "EYE_SIZE",
+        "EYE_UPPER_LID_POS",
+        "FACE_ASPECT_RATIO",
+        "MALAR_FULLNESS",
+        "MOUTH_WIDTH",
+        "NOSE_BRIDGE_WIDTH",
+        "NOSE_TIP_SHAPE",
+        "PHILTRUM_LENGTH"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+
+# Tests / tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Claude / lab workflow
+.claude/
+.claude-notes/
+
+# Large / non-source artifacts (excluded from the public repo for now)
+facekit_asian_avg.png
+facekit.pptx
+results/

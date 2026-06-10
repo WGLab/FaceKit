@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facekit"
+version = "0.1.0"
+description = "Rare disease facial phenotype analysis toolkit"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Tomorrow", email = "you@upenn.edu" }]
+
+# Core dependencies (shared by all modules)
+dependencies = [
+    "typer>=0.12",
+    "numpy>=2.0,<3",
+    "opencv-contrib-python>=4.10",
+    "pillow>=10",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+# Module: landmarks + average face
+morph = [
+    "mediapipe>=0.10.30",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+]
+
+# Module: geometric phenotype features (extract-features)
+geometric = [
+    "mediapipe>=0.10.30",
+    "oaklib>=0.5",
+    "pandas>=2.0",
+]
+
+# All modules installed
+all = [
+    "facekit[morph,geometric]",
+]
+
+# Developer tools
+dev = [
+    "pytest>=7",
+    "black",
+    "ruff",
+]
+
+# Registers the `facekit` CLI command
+[project.scripts]
+facekit = "facekit.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
