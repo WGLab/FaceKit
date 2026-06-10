@@ -59,6 +59,10 @@ FEATURES = [
 BIZYG = (234, 454)
 DPI = 200
 
+# All three figures are normalized to one square canvas so they render at a
+# uniform size in the README gallery (aspect ratio preserved, transparent pad).
+CANVAS = 512
+
 
 def run(cmd: list[str]) -> None:
     subprocess.run(cmd, check=True, capture_output=True, text=True)
@@ -159,6 +163,23 @@ def make_extract_features(crouzon_image: Path, model_path: Path | None) -> None:
     plt.close(fig)
 
 
+def normalize_figures() -> None:
+    """Resize every figure to a uniform CANVAS x CANVAS box (aspect preserved,
+    centered on a transparent square) so they look consistent in the README."""
+    from PIL import Image
+
+    for name in ("average-face", "extract-landmarks", "extract-features"):
+        path = FIGURES / f"{name}.png"
+        im = Image.open(path).convert("RGBA")
+        w, h = im.size
+        scale = CANVAS / max(w, h)
+        nw, nh = round(w * scale), round(h * scale)
+        im = im.resize((nw, nh), Image.LANCZOS)
+        canvas = Image.new("RGBA", (CANVAS, CANVAS), (0, 0, 0, 0))
+        canvas.paste(im, ((CANVAS - nw) // 2, (CANVAS - nh) // 2), im)
+        canvas.save(path)
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--crouzon-image", type=Path, default=DEFAULT_CROUZON)
@@ -178,6 +199,7 @@ def main() -> None:
         make_extract_landmarks(args.crouzon_image, tmp)
     make_extract_features(args.crouzon_image, args.model_path)
 
+    normalize_figures()
     print("wrote 3 figures to", FIGURES)
 
 
