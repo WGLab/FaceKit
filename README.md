@@ -146,4 +146,4 @@ tests/                    # pytest suite
 
 ## License
 
-MIT. See `LICENSE`.
+[MIT License](https://wglab.mit-license.org/).
