@@ -1,6 +1,6 @@
 # FaceKit
 
-A lightweight toolkit for interpretable facial phenotyping in rare genetic
+A toolkit for interpretable facial phenotyping in rare genetic
 diseases. FaceKit turns frontal photographs into standardized, pose-corrected
 geometric measurements and z-scores against a normative reference; trains
 cohort-specific StyleGAN3 generators for synthetic faces; and analyses those
